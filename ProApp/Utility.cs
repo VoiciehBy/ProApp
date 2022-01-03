@@ -9,5 +9,5 @@ public static class Utility
     {
         Random random = new Random();
         return random.NextDouble();
-    }	
+    }
 }
