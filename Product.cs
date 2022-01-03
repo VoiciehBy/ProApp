@@ -7,6 +7,8 @@ public class Product
 {
 	string name;
 	float amount;
+	public string Name { get => name; set => name = value; }
+	public float Amount { get => amount; set => amount = value; }
 	public Product()
 	{
 		Name = "None";
@@ -17,7 +19,4 @@ public class Product
 		Name = name;
 		Amount = amount;
 	}
-
-    public string Name { get => name; set => name = value; }
-    public float Amount { get => amount; set => amount = value; }
 }
