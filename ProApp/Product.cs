@@ -7,17 +7,21 @@ public class Product
 {
 	string name;
 	float amount;
+	string unit;
 	public string Name { get => name; set => name = value; }
 	public float Amount { get => amount; set => amount = value; }
+	public string Unit { get => unit; set => unit = value; }
 	public Product()
 	{
-		Name = "None";
-		Amount = 0.0f;
+		name = "None";
+		amount = 0.0f;
+		unit = "kg";
 	}
-	public Product(string name,float amount)
+	public Product(string name = "None",float amount = 0.0f,string unit = "kg")
 	{
-		Name = name;
-		Amount = amount;
+		this.name = name;
+		this.amount = amount;
+		this.unit = unit;
 	}
 
     public override bool Equals(object obj)
@@ -32,6 +36,6 @@ public class Product
 
     public override string ToString()
     {
-		return "Name:" + name + "\n" + amount;
+		return name + " " + amount + unit;
     }
 }
