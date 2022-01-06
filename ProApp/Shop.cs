@@ -21,14 +21,25 @@ public class Shop
     {
 		products.Add(product);
     }
+	public bool isProductOnTheStock(Product product)
+	{
+		return products.Contains(product);
+	}
+	public int indexOfTheProduct(Product product)
+    {
+		return products.IndexOf(product);
+    }
+	public void removeAllFromTheStock(Product product)
+	{
+		if (isProductOnTheStock(product)) products.RemoveAt(indexOfTheProduct(product));
+		else Console.WriteLine("There is no " + product.Name + " on the stock.");
+	}
 	public void showStock()
     {
 		Console.WriteLine("STOCK:");
-		int i = 1;
 		foreach(Product product in products)
         {
-			Console.WriteLine(i.ToString() + " " + product);
-			i++;
+			Console.WriteLine(products.IndexOf(product).ToString() + " " + product);
         }
     }
 }
