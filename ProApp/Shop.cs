@@ -29,6 +29,35 @@ public class Shop
     {
 		return products.IndexOf(product);
     }
+
+	public void removeFromTheStock(Product product,float amount)
+	{
+		try
+		{
+			if (isProductOnTheStock(product))
+            {
+				if (amount == product.Amount)
+					products.RemoveAt(indexOfTheProduct(product));
+				else if (amount > product.Amount)
+				{
+					string msg = "There is no as much/many " + product.Name.ToLower() + " on the stock.";
+					throw new NoProductException(msg);
+				}
+				else
+					product.Amount -= amount;
+			}		
+			else
+			{
+				string msg = "There is no " + product.Name.ToLower() + " on the stock.";
+				throw new NoProductException(msg);
+			}
+		}
+		catch (NoProductException nPE)
+		{
+			Console.WriteLine(nPE.Message);
+		}
+	}
+
 	public void removeAllFromTheStock(Product product)
 	{
 		try
