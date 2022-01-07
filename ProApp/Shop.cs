@@ -31,8 +31,20 @@ public class Shop
     }
 	public void removeAllFromTheStock(Product product)
 	{
-		if (isProductOnTheStock(product)) products.RemoveAt(indexOfTheProduct(product));
-		else Console.WriteLine("There is no " + product.Name + " on the stock.");
+		try
+		{
+			if (isProductOnTheStock(product))
+				products.RemoveAt(indexOfTheProduct(product));
+			else
+			{
+				string msg = "There is no " + product.Name.ToLower() + " on the stock.";
+				throw new NoProductException(msg);
+			}
+		}
+		catch(NoProductException nPE)
+        {
+			Console.WriteLine(nPE.Message);
+        }
 	}
 	public void showStock()
     {
