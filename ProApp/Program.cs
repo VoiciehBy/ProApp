@@ -14,9 +14,9 @@ namespace ProApp
             shop.addToStock(product);
             shop.addToStock(tomatoes);
             shop.showStock();
-            shop.removeFromTheStock(tomatoes,25.0f);
+            shop.removeFromTheStock(tomatoes, 25.0f);
             shop.showStock();
-            shop.removeFromTheStock(tomatoes,26.0f);
+            shop.removeFromTheStock(tomatoes, 26.0f);
             shop.removeAllFromTheStock(peas);
             shop.showStock();
         }
