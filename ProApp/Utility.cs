@@ -16,7 +16,7 @@ namespace ProApp
         {
             string firstCharacter = str.Substring(0, 1).ToUpper();
             string remaingCharacter = str.Substring(1, str.Length - 1);
-            return firstCharacter + remaingCharacter;
+            return firstCharacter + remaingCharacter.ToLower();
         }
 
         private static string thereIsOrThereAre(Product product)
@@ -55,6 +55,19 @@ namespace ProApp
             s1 = s1.ToLower();
             string s2 = Constants.IN_THE_STOCK + '.';
             return initCap(s + s1 + s2);
+        }
+
+        public static string tryingToRemoveTxt(Product product)
+        {
+            string s = Constants.TRYING_TO_REMOVE + product.Amount + product.Unit + ' ';
+            string s1 = product.Name + Constants.FROM_THE_STOCK + "...";
+            return initCap(s + s1);
+        }
+        public static string tryingToRemoveTxt(Product product,float amount)
+        {
+            string s = Constants.TRYING_TO_REMOVE + amount + product.Unit + ' ';
+            string s1 = product.Name + Constants.FROM_THE_STOCK + "...";
+            return initCap(s + s1);
         }
     }
 }

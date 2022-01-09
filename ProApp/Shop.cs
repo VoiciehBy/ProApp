@@ -35,11 +35,11 @@ namespace ProApp
 
         public void removeFromTheStock(Product product, float amount)
         {
-            Console.WriteLine(Utility.initCap(Constants.TRYING_TO_REMOVE + amount + product.Unit + ' ' + product.Name + Constants.FROM_THE_STOCK + "..."));
             try
             {
+                Console.WriteLine(Utility.tryingToRemoveTxt(product,amount));
                 if (isProductOnTheStock(product))
-                {                 
+                {
                     if (amount == product.Amount)
                         products.RemoveAt(indexOfTheProduct(product));
                     else if (amount > product.Amount)
@@ -67,6 +67,7 @@ namespace ProApp
         {
             try
             {
+                Console.WriteLine(Utility.tryingToRemoveTxt(product));
                 if (isProductOnTheStock(product))
                     products.RemoveAt(indexOfTheProduct(product));
                 else
@@ -84,9 +85,7 @@ namespace ProApp
         {
             Console.WriteLine(Constants.STOCK + ':');
             foreach (Product product in products)
-            {
                 Console.WriteLine(products.IndexOf(product).ToString() + ' ' + product);
-            }
         }
     }
 }
