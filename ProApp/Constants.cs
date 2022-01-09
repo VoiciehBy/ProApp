@@ -12,6 +12,9 @@ namespace ProApp
         public static string ARE = "are ";
         public static string NO = "no ";
         public static string NOT = "not ";
+        public static string SO = "so ";
+        public static string MANY = "many ";
+        public static string MUCH = "much ";
         public static string THERE_IS_NO = THERE + IS + NO;
         public static string THERE_ARE_NO = THERE + ARE + NO;
         public static string TRYING_TO_REMOVE = "trying to remove ";

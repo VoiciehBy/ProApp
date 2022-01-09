@@ -34,8 +34,13 @@ namespace ProApp
                 s += Constants.ARE;
             else
                 s += Constants.IS;
-            s += Constants.NOT;
-            string s1 = (product.Amount + product.Unit + ' ' + product.Name).ToLower();
+            s += Constants.NOT + Constants.SO;
+            string s1 = "";
+            if (product.Countablilty)
+                s1 += Constants.MANY;
+            else s1 += Constants.MUCH;
+            s1 += (product.Name);
+            s1 = s1.ToLower();
             string s2 = Constants.IN_THE_STOCK + '.';
             return initCap(s + s1 + s2);
         }
