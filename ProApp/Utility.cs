@@ -19,27 +19,39 @@ namespace ProApp
             return firstCharacter + remaingCharacter;
         }
 
+        private static string thereIsOrThereAre(Product product)
+        {
+            string s = Constants.THERE;
+            if (product.Countablilty && product.Amount > 1)
+                s += Constants.ARE;
+            else s += Constants.IS;
+            return s;
+        }
+
         public static string noProductTxt(Product product)
         {
-            string s = Constants.THERE_IS_NO;
+            string s = thereIsOrThereAre(product);
+            s += Constants.NO;
             string s1 = product.Name.ToLower();
             string s2 = Constants.IN_THE_STOCK + '.';
             return initCap(s + s1 + s2);
         }
 
+        private static string manyOrMuch(Product product)
+        {
+            string s = "";
+            if (product.Countablilty)
+                s += Constants.MANY;
+            else s += Constants.MUCH;
+            return s;
+        }
+
         public static string notEnoughtProduct(Product product)
         {
-            string s = Constants.THERE;
-            if (product.Countablilty && product.Amount > 1)
-                s += Constants.ARE;
-            else
-                s += Constants.IS;
-            s += Constants.NOT + Constants.SO;
-            string s1 = "";
-            if (product.Countablilty)
-                s1 += Constants.MANY;
-            else s1 += Constants.MUCH;
-            s1 += (product.Name);
+            string s = thereIsOrThereAre(product);
+            s += Constants.NOT_SO;
+            string s1 = manyOrMuch(product);
+            s1 = s1 + (product.Name);
             s1 = s1.ToLower();
             string s2 = Constants.IN_THE_STOCK + '.';
             return initCap(s + s1 + s2);
