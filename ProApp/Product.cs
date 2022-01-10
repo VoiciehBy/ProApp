@@ -11,10 +11,6 @@ namespace ProApp
         float amount;
         bool isCountable;
         string unit;
-        public string Name { get => name; set => name = value; }
-        public float Amount { get => amount; set => amount = value; }
-        public bool Countablilty { get => isCountable; set => isCountable = value; }
-        public string Unit { get => unit; set => unit = value; }
         public Product()
         {
             name = "None";
@@ -29,20 +25,13 @@ namespace ProApp
             this.isCountable = isCountable;
             this.unit = unit;
         }
+        public string Name { get => name; set => name = value; }
+        public float Amount { get => amount; set => amount = value; }
+        public bool Countablilty { get => isCountable; set => isCountable = value; }
+        public string Unit { get => unit; set => unit = value; }
 
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            return name + " " + amount + unit;
-        }
+        public override bool Equals(object obj) => base.Equals(obj);
+        public override int GetHashCode() => base.GetHashCode();
+        public override string ToString() => name + " " + amount + unit;
     }
 }
