@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProApp
+﻿namespace ProApp
 {
     public static class Constants
     {
         public static string STOCK = "STOCK";
+        public static string SHOPING_HISTORY = "SHOPING_HISTORY";
         public static string THERE = "there ";
         public static string IS = "is ";
         public static string ARE = "are ";
