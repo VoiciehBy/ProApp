@@ -63,11 +63,22 @@ namespace ProApp
             string s1 = product.Name + Constants.FROM_THE_STOCK + "...";
             return initCap(s + s1);
         }
-        public static string tryingToRemoveTxt(Product product,float amount)
+        public static string tryingToRemoveTxt(Product product, float amount)
         {
             string s = Constants.TRYING_TO_REMOVE + amount + product.Unit + ' ';
             string s1 = product.Name + Constants.FROM_THE_STOCK + "...";
             return initCap(s + s1);
+        }
+
+        public static string isInDebtTxt(ShopClient sC)
+        {
+            string s = Constants.IS + sC.Id + ' ' + Constants.IN_DEBT + ':' + sC.isInDebt();
+            return initCap(s);
+        }
+        public static string moneyToPayTxt(ShopClient sC)
+        {
+            string s = Constants.MONEY_TO_PAY_TXT + Constants.OF + sC.Id + ':' + sC.moneyToPay();
+            return initCap(s);
         }
     }
 }

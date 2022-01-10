@@ -24,21 +24,15 @@ namespace ProApp
         {
             products.Add(product);
         }
-        public bool isProductOnTheStock(Product product)
-        {
-            return products.Contains(product);
-        }
-        public int indexOfTheProduct(Product product)
-        {
-            return products.IndexOf(product);
-        }
+        public bool isProductInTheStock(Product p) => products.Contains(p);
+        public int indexOfTheProduct(Product product) => products.IndexOf(product);
 
-        public void removeFromTheStock(Product product, float amount)
+        public bool removeFromTheStock(Product product, float amount)
         {
             try
             {
                 Console.WriteLine(Utility.tryingToRemoveTxt(product,amount));
-                if (isProductOnTheStock(product))
+                if (isProductInTheStock(product))
                 {
                     if (amount == product.Amount)
                         products.RemoveAt(indexOfTheProduct(product));
@@ -50,16 +44,18 @@ namespace ProApp
                     else
                         product.Amount -= amount;
                     Console.WriteLine(Constants.SUCCESS);
+                    return true;
                 }
                 else
                 {
-                    string msg = Utility.noProductTxt(product);
+                    string msg = Constants.FAILURE + "->" + Utility.noProductTxt(product);
                     throw new NoProductException(msg);
                 }
             }
             catch (NoProductException nPE)
             {
-                Console.WriteLine(Constants.FAILURE + "\n" + nPE.Message);
+                Console.WriteLine(nPE.Message);
+                return false;
             }
         }
 
@@ -68,7 +64,7 @@ namespace ProApp
             try
             {
                 Console.WriteLine(Utility.tryingToRemoveTxt(product));
-                if (isProductOnTheStock(product))
+                if (isProductInTheStock(product))
                     products.RemoveAt(indexOfTheProduct(product));
                 else
                 {
@@ -86,6 +82,7 @@ namespace ProApp
             Console.WriteLine(Constants.STOCK + ':');
             foreach (Product product in products)
                 Console.WriteLine(products.IndexOf(product).ToString() + ' ' + product);
+            Console.WriteLine();
         }
     }
 }
