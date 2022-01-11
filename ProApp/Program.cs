@@ -20,7 +20,7 @@ namespace ProApp
             shop.removeAllFromTheStock(peas);
             shop.showStock();
             ShopClient shopClient = new ShopClient();
-            shopClient.buy(tomatoes, 1.0f);
+            shopClient.buy(tomatoes, 0.25f);
             shopClient.showShoppingHistory();
             Console.WriteLine(Utility.isInDebtTxt(shopClient));
             Console.WriteLine(Utility.moneyToPayTxt(shopClient));

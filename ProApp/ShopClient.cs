@@ -39,7 +39,8 @@ namespace ProApp
             Shop shop = Shop.getInstance();
             if (shop.removeFromTheStock(product, amount))
             {
-                shoppingHistory.Add(product);
+                Product p = new Product(product.Name, amount, true, "kg", product.BasePrice);
+                shoppingHistory.Add(p);
                 dueAmount += (product.BasePrice * amount);
                 string txt = id + ' ' + Constants.BOUGHT + amount + product.Unit + ' ';
                 txt = txt += Constants.OF + product.Name.ToLower();
