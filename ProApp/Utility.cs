@@ -46,12 +46,12 @@ namespace ProApp
             return s;
         }
 
-        public static string notEnoughtProduct(Product product)
+        public static string notEnoughtProductTxt(Product product)
         {
             string s = thereIsOrThereAre(product);
             s += Constants.NOT_SO;
             string s1 = manyOrMuch(product);
-            s1 = s1 + (product.Name);
+            s1 += (product.Name);
             s1 = s1.ToLower();
             string s2 = Constants.IN_THE_STOCK + '.';
             return initCap(s + s1 + s2);
@@ -79,6 +79,14 @@ namespace ProApp
         {
             string s = Constants.MONEY_TO_PAY_TXT + Constants.OF + sC.Id + ':' + sC.moneyToPay();
             return initCap(s);
+        }
+
+        public static string clientBoughtTxt(ShopClient sC, Product product, float amount)
+        {
+            string s = sC.Id + ' ' + Constants.BOUGHT;
+            string s1 = amount + product.Unit + ' ';
+            string s2 = Constants.OF + product.Name.ToLower();
+            return s + s1 + s2;
         }
     }
 }

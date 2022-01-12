@@ -42,8 +42,7 @@ namespace ProApp
                 Product p = new Product(product.Name, amount, true, "kg", product.BasePrice);
                 shoppingHistory.Add(p);
                 dueAmount += (product.BasePrice * amount);
-                string txt = id + ' ' + Constants.BOUGHT + amount + product.Unit + ' ';
-                txt = txt += Constants.OF + product.Name.ToLower();
+                string txt = Utility.clientBoughtTxt(this, product, amount);
                 Console.WriteLine(txt);
             }
         }

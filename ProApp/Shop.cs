@@ -38,7 +38,7 @@ namespace ProApp
                         products.RemoveAt(indexOfTheProduct(product));
                     else if (amount > product.Amount)
                     {
-                        string msg = Utility.notEnoughtProduct(product);
+                        string msg = Utility.notEnoughtProductTxt(product);
                         throw new NoProductException(msg);
                     }
                     else
