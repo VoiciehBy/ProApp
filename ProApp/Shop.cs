@@ -8,11 +8,13 @@ namespace ProApp
 {
     public class Shop
     {
+        public static int numberOfUniqueProducts;
         private static Shop instance;
         private ArrayList products;
         private Shop()
         {
             products = new ArrayList();
+            numberOfUniqueProducts = 0;
         }
         public static Shop getInstance()
         {
@@ -23,15 +25,17 @@ namespace ProApp
         public void addToStock(Product product)
         {
             products.Add(product);
+            numberOfUniqueProducts++;
+            ProductDAO.addProduct(numberOfUniqueProducts, product.Name, product.Amount, product.Countablilty, product.Unit, product.BasePrice);
         }
         public bool isProductInTheStock(Product p) => products.Contains(p);
         public int indexOfTheProduct(Product product) => products.IndexOf(product);
 
-        public bool removeFromTheStock(Product product, float amount)
+        public bool removeFromTheStock(int id, Product product, float amount)
         {
             try
             {
-                Console.WriteLine(Utility.tryingToRemoveTxt(product,amount));
+                Console.WriteLine(Utility.tryingToRemoveTxt(product, amount));
                 if (isProductInTheStock(product))
                 {
                     if (amount == product.Amount)
@@ -43,6 +47,7 @@ namespace ProApp
                     }
                     else
                         product.Amount -= amount;
+                    ProductDAO.removeProduct(id, amount);
                     Console.WriteLine(Constants.SUCCESS);
                     return true;
                 }
@@ -59,13 +64,16 @@ namespace ProApp
             }
         }
 
-        public void removeAllFromTheStock(Product product)
+        public void removeAllFromTheStock(int id, Product product)
         {
             try
             {
                 Console.WriteLine(Utility.tryingToRemoveTxt(product));
                 if (isProductInTheStock(product))
+                {
                     products.RemoveAt(indexOfTheProduct(product));
+                    ProductDAO.deleteProduct(id);
+                }
                 else
                 {
                     string msg = Utility.noProductTxt(product);
@@ -83,6 +91,11 @@ namespace ProApp
             foreach (Product product in products)
                 Console.WriteLine(products.IndexOf(product).ToString() + ' ' + product);
             Console.WriteLine();
+
+            /*ArrayList rows = DBConnection.getData();
+
+            foreach (String row in rows)
+                Console.WriteLine(row);*/
         }
     }
 }

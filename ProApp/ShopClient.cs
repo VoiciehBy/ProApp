@@ -34,10 +34,10 @@ namespace ProApp
         public float PaidAmount { get => paidAmount; set => paidAmount = value; }
         public float DueAmount { get => dueAmount; set => dueAmount = value; }
 
-        public void buy(Product product, float amount)
+        public void buy(int id, Product product, float amount)
         {
             Shop shop = Shop.getInstance();
-            if (shop.removeFromTheStock(product, amount))
+            if (shop.removeFromTheStock(id, product, amount))
             {
                 Product p = new Product(product.Name, amount, true, "kg", product.BasePrice);
                 shoppingHistory.Add(p);
@@ -55,7 +55,7 @@ namespace ProApp
         }
 
         public bool isInDebt() => (dueAmount > paidAmount);
-        public float moneyToPay() => dueAmount - paidAmount;  
+        public float moneyToPay() => dueAmount - paidAmount;
         public override bool Equals(object obj) => base.Equals(obj);
         public override int GetHashCode() => base.GetHashCode();
         public override string ToString() => base.ToString();
