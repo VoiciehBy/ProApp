@@ -8,8 +8,7 @@ namespace ProApp
         private string id;
         private string name;
         private string surname;
-        private float paidAmount;
-        private float dueAmount;
+        private float balance;
 
         private ArrayList shoppingHistory;
         public ShopClient()
@@ -17,22 +16,21 @@ namespace ProApp
             name = "None";
             surname = "None";
             id = "-1";
+            balance = 0.0f;
             shoppingHistory = new ArrayList();
         }
-        public ShopClient(string name = "None", string surname = "None", string id = "-1", float paidAmount = 0.0f, float dueAmount = 0.0f)
+        public ShopClient(string id = "-1", string name = "None", string surname = "None", float balance = 0.0f)
         {
+            this.id = id;
             this.name = name;
             this.surname = surname;
-            this.id = id;
-            this.paidAmount = paidAmount;
-            this.dueAmount = dueAmount;
+            this.balance = balance;
             shoppingHistory = new ArrayList();
         }
         public string Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Surname { get => surname; set => surname = value; }
-        public float PaidAmount { get => paidAmount; set => paidAmount = value; }
-        public float DueAmount { get => dueAmount; set => dueAmount = value; }
+        public float Balance { get => balance; set => balance = value; }
 
         public void buy(int id, Product product, float amount)
         {
@@ -41,7 +39,7 @@ namespace ProApp
             {
                 Product p = new Product(product.Name, amount, true, "kg", product.BasePrice);
                 shoppingHistory.Add(p);
-                dueAmount += (product.BasePrice * amount);
+                this.balance -= (product.BasePrice * amount);
                 string txt = Utility.clientBoughtTxt(this, product, amount);
                 Console.WriteLine(txt);
             }
@@ -54,8 +52,8 @@ namespace ProApp
             Console.WriteLine();
         }
 
-        public bool isInDebt() => (dueAmount > paidAmount);
-        public float moneyToPay() => dueAmount - paidAmount;
+        public bool isInDebt() => (balance < 0);
+        public float moneyToPay() => -1 * balance;
         public override bool Equals(object obj) => base.Equals(obj);
         public override int GetHashCode() => base.GetHashCode();
         public override string ToString() => base.ToString();

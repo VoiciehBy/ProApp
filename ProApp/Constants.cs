@@ -23,5 +23,6 @@
         public static string IN_DEBT = IN + "debt ";
         public static string MONEY_TO_PAY_TXT = "money to pay ";
         public static string BOUGHT = "bought ";
+        public static string MONEY_SYMBOL = "$";
     }
 }

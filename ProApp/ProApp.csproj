@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <None Update="proapptest.mdf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

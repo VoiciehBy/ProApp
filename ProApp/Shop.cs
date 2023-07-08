@@ -26,7 +26,7 @@ namespace ProApp
         {
             products.Add(product);
             numberOfUniqueProducts++;
-            ProductDAO.addProduct(numberOfUniqueProducts, product.Name, product.Amount, product.Countablilty, product.Unit, product.BasePrice);
+            ProductDAO.addProduct(numberOfUniqueProducts, product);
         }
         public bool isProductInTheStock(Product p) => products.Contains(p);
         public int indexOfTheProduct(Product product) => products.IndexOf(product);
@@ -72,7 +72,7 @@ namespace ProApp
                 if (isProductInTheStock(product))
                 {
                     products.RemoveAt(indexOfTheProduct(product));
-                    ProductDAO.deleteProduct(id);
+                    ProductDAO.deleteProductFromDB(id);
                 }
                 else
                 {

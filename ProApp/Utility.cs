@@ -77,7 +77,7 @@ namespace ProApp
         }
         public static string moneyToPayTxt(ShopClient sC)
         {
-            string s = Constants.MONEY_TO_PAY_TXT + Constants.OF + sC.Id + ':' + sC.moneyToPay();
+            string s = Constants.MONEY_TO_PAY_TXT + Constants.OF + sC.Id + ':' + sC.moneyToPay() + Constants.MONEY_SYMBOL;
             return initCap(s);
         }
 
